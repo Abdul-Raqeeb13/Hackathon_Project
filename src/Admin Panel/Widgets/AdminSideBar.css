@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sidebarContainer {
+    min-width: 42vh;
+    background-color: rgb(94, 195, 242);
+    height: 100vh;
+}
+
+.profile {
+    min-height: 35vh;
+    background-color: rgb(248, 95, 95);
+}
+
+.linksContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: yellowgreen;
+}
+
+.linksContainer span {
+    display: flex;  /* Make the span a flex container */
+    align-items: center;  /* Align icon and text horizontally in the center */
+    padding-block: 10px;
+    margin: 10px;
+    background-color: violet;
+}
+
+.linksContainer span .links {
+    margin-left: 10px; /* Add space between icon and text */
+    text-decoration: none;
+    color: black;
+}

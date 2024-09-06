@@ -8,51 +8,36 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'react-toastify/dist/ReactToastify.css'; // Ensure this CSS is imported
 import { useNavigate } from 'react-router'
 import NavbarLogo from '../Assets/Images/NavbarBrandBgRemover.png'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import { useAuth } from '../Components/AuthContext';
+import { ToastContainer, toast } from "react-toastify";
 
 
 export default function Header() {
+    const { isAuthenticated, logout } = useAuth();
+    const nav = useNavigate()
 
-    const nav  = useNavigate()
+    const logoutUser = async () => {
+        await logout()
+        nav("/")
+        toast.success("Logout Successful", {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
 
-    // const logout = () => {
-    //     nav("/")
-    //     // alert("ok")
-    //     localStorage.clear();
-    //     // toast.success("Logout Successful", {
-    //     //     position: "top-center",
-    //     //     autoClose: 5000,
-    //     //     hideProgressBar: false,
-    //     //     closeOnClick: true,
-    //     //     pauseOnHover: true,
-    //     //     draggable: true,
-    //     //     progress: undefined,
-    //     //     theme: "dark",
-    //     // });
-    //     localStorage.clear()
-        
-    // }
+    }
 
     const login = () => {
-        nav('/user/signup')
+        nav('/signup')
     }
     return (
         <div>
-            {/* <ToastContainer
+            <ToastContainer
                 position="top-center"
                 autoClose={5000}
                 hideProgressBar={false}
@@ -63,32 +48,33 @@ export default function Header() {
                 draggable
                 pauseOnHover
                 theme="dark"
-            /> */}
+            />
 
             <Navbar bg="primary" expand="lg" variant="dark">
-             <Container>
-                   <img src={NavbarLogo} alt="" srcset=""  style={{ width: '50px', height: 'auto', backgroundColor:"transparent" }}/> 
+                <Container>
+                    <img src={NavbarLogo} alt="" srcset="" style={{ width: '50px', height: 'auto', backgroundColor: "transparent" }} />
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto me-auto">
-                            <Nav.Link as={Link} to="/Home" className="text-white">
+                            <Nav.Link as={Link} to="/" className="text-white">
                                 Home
                             </Nav.Link>
-                            <Nav.Link as={Link} to="/FindFriends" className="text-white">
-                                Find Friends
+                            <Nav.Link as={Link} to="/contact" className="text-white">
+                                Contact
                             </Nav.Link>
-                            <Nav.Link as={Link} to="/Requests" className="text-white">
-                                Requests
-                            </Nav.Link>
-                            <Nav.Link as={Link} to="/MessageScreen" className="text-white">
-                                Messages
+                            <Nav.Link as={Link} to="/about" className="text-white">
+                                About
                             </Nav.Link>
                         </Nav>
                         <Nav>
-                            
-                                {/* <button onClick={()=>logout()} className="btn btn-success">Login</button> */}
-                                <button onClick={()=>login()} className="btn btn-success">Login</button>
-                        
+
+
+                            {isAuthenticated ? (
+                                <button className="btn btn-success" onClick={()=>logoutUser()}>Logout</button>
+                            ) : (
+                                <button className="btn btn-success" onClick={() => login()} >Login</button>
+                            )}
+
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

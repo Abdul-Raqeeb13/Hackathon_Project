@@ -5,13 +5,20 @@ import { Link } from 'react-router-dom';
 import './CSS/SignUp.css';
 import firebase from '../Config/Firebase';
 import { ToastContainer, toast } from "react-toastify";
+import { useAuth } from './AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignIn() {
+  const { login } = useAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(false); // State to disable the button
+  const navigation = useNavigate()
 
   const Login = async () => {
+    login();
+    navigation('/contact')
     setBtnDisabled(true); // Disable the button when login starts
     try {
       await firebase.auth().signInWithEmailAndPassword(email, password)
@@ -24,8 +31,10 @@ export default function SignIn() {
                 console.log("user login");
                 localStorage.setItem("UserID", userId);
                 localStorage.setItem("UserName", snapshot.val()["userName"]);
+                navigation('/')
               } else if (snapshot.exists() && snapshot.val()["userType"] === "admin") {
                 console.log("admin login");
+                navigation('/admin/home')
               }
             });
 

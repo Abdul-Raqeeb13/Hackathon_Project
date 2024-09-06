@@ -80,7 +80,7 @@ export default function SignUp() {
         <div className="container form_container">
           <h1>SignUp</h1>
           <span>
-            Already have an account? <Link to="/user/signin">Login</Link>
+            Already have an account? <Link to="/signin">Login</Link>
           </span>
 
           <div className="fieldContainer">
