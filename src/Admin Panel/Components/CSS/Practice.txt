@@ -1,0 +1,51 @@
+.main-content {
+    margin-left: 45vh; /* Add margin to account for the sidebar width */
+    padding: 20px;
+    background-color: #f4f4f4;
+    min-height: 100vh; /* Ensure it takes the full height of the viewport */
+}
+
+
+
+admin sidebar css
+@media (max-width: 840px) {
+    .sidebarContainer {
+        width: 30vw;  /* Expand sidebar for tablets */
+    }
+
+    .profile {
+        width: 20vw;  /* Adjust profile image size for tablets */
+        height: auto;
+    }
+
+    .linksContainer span {
+        font-size: 18px; /* Slightly reduce font size for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebarContainer {
+        width: 60vw;  /* Further expand sidebar for smaller screens */
+        height: auto; /* Let sidebar content determine height */
+        position: relative;
+    }
+
+    .profile {
+        width: 30vw;  /* Adjust profile image size for mobile */
+    }
+
+    .linksContainer span {
+        font-size: 16px; /* Reduce font size for mobile */
+        margin-top: 15px;
+    }
+} */
+
+
+
+
+
+
+
+// <div className="profileImg" onClick={()=>OpenModal()}>
+                                //     <img src="https://media.istockphoto.com/id/1476170969/photo/portrait-of-young-man-ready-for-job-business-concept.webp?a=1&b=1&s=612x612&w=0&k=20&c=-F_sZl6saA5wNg2OTdO3zcHZ3aQ2ml9Ru-PXGcUDdHg=" alt="" srcset="" />
+                                // </div>

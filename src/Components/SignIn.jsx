@@ -17,14 +17,13 @@ export default function SignIn() {
   const navigation = useNavigate()
 
   const Login = async () => {
-    login();
-    navigation('/contact')
+   
     setBtnDisabled(true); // Disable the button when login starts
     try {
       await firebase.auth().signInWithEmailAndPassword(email, password)
         .then(async (snap) => {
           let userId = snap.user.uid;
-
+          login();
           await firebase.database().ref("users").child(userId).get()
             .then((snapshot) => {
               if (snapshot.exists() && snapshot.val()["userType"] === "user") {
@@ -34,7 +33,7 @@ export default function SignIn() {
                 navigation('/')
               } else if (snapshot.exists() && snapshot.val()["userType"] === "admin") {
                 console.log("admin login");
-                navigation('/admin/home')
+                navigation('/admin')
               }
             });
 
@@ -86,7 +85,7 @@ export default function SignIn() {
 
         <div className="container form_container">
           <h1 style={{ marginBottom: '20px' }}>Welcome, Back</h1>
-          <span>Don't have an account? <Link to='/user/signup'>Signup</Link></span>
+          <span>Don't have an account? <Link to='/signup'>Signup</Link></span>
 
           <div className="fieldContainer">
             <TextField

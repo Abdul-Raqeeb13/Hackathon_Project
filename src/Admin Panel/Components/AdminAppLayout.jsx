@@ -9,8 +9,11 @@ export default function AppLayout() {
     <>
       <div className="AppLayoutContainer">
         <AdminSideBar />
-        <Outlet />
+        <div className="mainContent">
+          <Outlet/>
+          </div>
       </div>
+    
     </>
   )
 }

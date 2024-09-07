@@ -7,16 +7,19 @@ import About from './Components/About';
 import SignUp from './Components/SignUp';
 import SignIn from './Components/SignIn';
 import AdminAppLayout from './Admin Panel/Components/AdminAppLayout';
-import AdminHome from './Admin Panel/Components/Admin Home';
-import AdminAbout from './Admin Panel/Components/Admin About';
 import { AuthProvider } from './Components/AuthContext';
 import ProtectedRoute from './Components/ProtectedRoute';
 import Contact from './Components/Contact';
+import AdminDashboard from './Admin Panel/Components/AdminDashboard';
+import AdminOrder from './Admin Panel/Components/Admin Order';
+import AdminPayment from './Admin Panel/Components/Admin Payment';
+import AdminSetting from './Admin Panel/Components/Admin Setting';
+import UpdateProfile from './Components/UpdateProfile';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AppLayout />,
+    element: <AppLayout />,  
     children: [
       {
         path: "/",
@@ -38,6 +41,10 @@ const router = createBrowserRouter([
         path: '/signin',
         element: <SignIn />,
       },
+      {
+        path: '/updateProfile',
+        element: <UpdateProfile />,
+      },
     ]
   },
   {
@@ -45,13 +52,22 @@ const router = createBrowserRouter([
     element: <AdminAppLayout />,
     children: [
       {
-        path: "/admin/home",
-        element: <AdminHome />
+        path: "/admin",
+        element: <AdminDashboard />
       },
       {
-        path: "/admin/about",
-        element: <AdminAbout />
+        path: "/admin/order",
+        element: <AdminOrder />
       },
+      {
+        path: "/admin/payment",
+        element: <AdminPayment />
+      },
+      {
+        path: "/admin/setting",
+        element: <AdminSetting />
+      },
+    
     ]
   }
 ]);

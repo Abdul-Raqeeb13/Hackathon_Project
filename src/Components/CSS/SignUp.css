@@ -28,6 +28,11 @@
     margin-bottom: 10px;
 }
 
+.form_container .fieldContainer .form-control{
+    background-color: rgb(196, 228, 228);
+    
+}
+
 .submitBtn{
     margin-top: 20px;
 }
